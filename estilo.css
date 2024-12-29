@@ -92,7 +92,7 @@ header img {
 
 /*----------------------------------------*/
 
-nav a{
+.nav a{
     text-decoration:none;
     display:inline;  /*--- en la misma linea-------------*/
 }   
@@ -327,6 +327,13 @@ p.ubica{
   margin-bottom: 10px; /* Espacio entre la imagen y el título */
 }
 
+.boton-borrar :hover{
+  color: violet;
+}
+
+.boton-pagar :hover{
+  color: aqua;
+}
 /*****************************************************************************************/
 
 #carrito{
@@ -342,8 +349,19 @@ p.ubica{
   overflow: hidden; /* Oculta el contenido que sobrepase el tamaño de la tarjeta */
 }
 
+.carrito-cont {
+  position: absolute;
+  top: 10px;
+  /*right: 10px;*/
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-weight: bold;
+}
     
-    
+/*#############################################################################*/
 
 a{ /*color de enlace*/
     color: gray;
@@ -454,7 +472,18 @@ a{ /*color de enlace*/
   }
   
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
+   /* Media query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .nav-list li {
+    display: none; /* Oculta todos los elementos del menú */
+  }
+
+  .nav-list li:last-child {
+    display: block; /* Muestra solo el carrito de compras */
+  }
+}
+   
     .footer-container {
       flex-direction: column; /* Las columnas se apilan en una sola columna en pantallas pequeñas */
       text-align: center;

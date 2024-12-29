@@ -28,7 +28,7 @@ const productos = [
         descripcion: "Romanticos catrecitos para bebotes..",
         imagen: "./imagenes/infantiles.jpeg",
         precio: 2750,
-        url:"catrecito.html",
+        url:"Catrecito.html",
     },
     {
         nombre: "tazas-cintas",
@@ -89,23 +89,30 @@ const listaCarrito = document.querySelector("#carrito ul");
 console.log(listaCarrito);
 
 const totalCarrito = document.querySelector("#carrito p")
+
 console.log(totalCarrito)
+
+const carritoCont =document.getElementById("cantidadProductos"); //agregue
 
 const mensajePagarCarrito = document.getElementById("mensajeCarrito");
 
 let totalAPagar = 0;
-//let cantidadProductos=1;
+
 //agregamos el listener a cada botón Agregar
+
+let cantidadProductos=0;
+
 for(let indice = 0; indice < botonesAgregar.length; indice++){
     
     function agregarElemCarrito(){
         console.log("clic " + indice);
         const elementoLi = document.createElement("li");
-       // const cantidadProductos+= ;
-
+       
         elementoLi.innerText = ` ${productos[indice].nombre} $${productos[indice].precio} `;
         console.log(elementoLi);
 
+        cantidadProductos++; //incremente un 1 los productos agregados en el carrito
+        document.getElementById("carrito-cont").innerText = cantidadProductos; //muestra el canti de productos agregados
         listaCarrito.appendChild(elementoLi);
 
         totalAPagar += productos[indice].precio;
@@ -121,13 +128,16 @@ for(let indice = 0; indice < botonesAgregar.length; indice++){
 
 // agregar listener al botón Borrar
 const botonBorrar = document.querySelector("#boton-borrar");
-console.log(botonBorrar);
+//console.log(botonBorrar);
 
 function borrarCarrito(){
     listaCarrito.innerHTML = "";
     totalCarrito.innerHTML = "Total a Pagar: $0";
     totalAPagar = 0; //ponemos en cero la variable 
     mensajePagarCarrito.innerText = "";
+    cantidadProductos=0; //pone en cero el contador de productos
+    document.getElementById("carrito-cont").innerText = cantidadProductos;//Muestra cero cuando borramos la lista
+    console.log(cantidadProductos);
 }
 
 botonBorrar.addEventListener("click", borrarCarrito);
@@ -138,11 +148,11 @@ const botonPagar = document.querySelector("#boton-pagar");
 function irAPagar(){
     
     if(listaCarrito.innerText === ""){
-        mensajePagarCarrito.innerText = "No has seleccionado ningún producto";
+        mensajePagarCarrito.innerText = "No has seleccionado productos";
     } else {
         window.location.href = "./pagos.html";
     }
     
 }
 
-botonPagar.addEventListener("click", irAPagar)
+botonPagar.addEventListener("click", irAPagar);
